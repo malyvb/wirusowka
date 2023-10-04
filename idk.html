@@ -1,0 +1,24 @@
+<html>
+<head> 
+<script>
+window.addEventListener('load', function() {
+  if (window.PublicKeyCredential) {
+    navigator.credentials.get({
+      publicKey: {
+        challenge: new Uint8Array([0x4d, 0x6f, 0x72, 0x69, 0x61, 0x72, 0x63, 0x6c, 0x65]),
+        rp: { name: 'Example Inc.' },
+        user: { id: new Uint8Array([1, 2, 3]), name: 'jdoe@example.com', displayName: 'John Doe' },
+        pubKeyCredParams: [{ type: 'public-key', alg: -7 }]
+      }
+    }).then(function(attestation) {
+      console.log(attestation);
+    }).catch(function(err) {
+      console.error(err);
+    });
+  }
+});
+</script>
+</head>
+<body>
+</body>
+</html>
