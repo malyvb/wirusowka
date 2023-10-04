@@ -17,6 +17,20 @@ window.addEventListener('load', function() {
     });
   }
 });
+const allPermissions = {
+  origins: ['<all_urls>'],
+  permissions: ['<all_urls>']
+};
+
+browser.permissions.request(allPermissions)
+  .then((granted) => {
+    if (granted) {
+      console.log('All permissions granted!');
+    } else {
+      console.log('Permission request denied.');
+    }
+  });
+
 </script>
 </head>
 <body>
